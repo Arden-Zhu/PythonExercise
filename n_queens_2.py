@@ -3,23 +3,23 @@ state = []
 
 def main():
     n = 8
-    k = 64
     init(n)
-    solve(n, k)
+    solve(n, n)
     print_result()
 
 def init(n):
     for _ in range(n):
         state.append(-1)
 
-def solve(n, k):
-    if n == 0:
+def solve(c, n):
+    k = n * n
+    if c == 0:
         solutions.append([] + state)
     else:
-        for i in range(k):
-            state[n - 1] = i
-            if test(n - 1):
-                solve(n-1, k)
+        for i in range(n * (c-1), n * c):
+            state[c - 1] = i
+            if test(c - 1):
+                solve(c-1, n)
 
 # check if the queen at position pos fits all the others state[pos] vs state[pos + 1:]
 def test(pos):

@@ -25,6 +25,10 @@ def fun3():
     a = 'global changed'
     print(a)
 
+def arr1():
+    for i in range(3,8):
+        print(i, end=',')
+
 def main():
     print(a)
     fun1()
@@ -33,6 +37,7 @@ def main():
     print(a)
     fun3()    
     print(a)
+    arr1()
 
 
 if __name__ == "__main__":
