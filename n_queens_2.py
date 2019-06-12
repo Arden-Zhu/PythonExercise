@@ -4,7 +4,7 @@ state = []
 def main():
     n = 8
     init(n)
-    solve(n, n)
+    solve(n - 1, n)
     print_result()
 
 def init(n):
@@ -12,18 +12,16 @@ def init(n):
         state.append(-1)
 
 def solve(c, n):
-    k = n * n
-    if c == 0:
+    if c < 0:
         solutions.append([] + state)
     else:
-        for i in range(n * (c-1), n * c):
-            state[c - 1] = i
-            if test(c - 1):
+        for i in range(n * c, n * c + n):
+            state[c] = i
+            if test(c, n):
                 solve(c-1, n)
 
 # check if the queen at position pos fits all the others state[pos] vs state[pos + 1:]
-def test(pos):
-    n = len(state)
+def test(pos, n):
     x1 = state[pos] % n
     y1 = state[pos] // n
     for pos2 in range(pos + 1, n):
