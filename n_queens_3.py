@@ -3,7 +3,7 @@ def main():
     queen.solve()
     queen.print_result()
 
-class Queen:
+class Queen(object):
     def __init__(self, n):
         self.n = n
         self.k = n * n
